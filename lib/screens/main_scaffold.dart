@@ -21,31 +21,43 @@ class MainScaffold extends StatefulWidget {
   });
 
   @override
-  State<MainScaffold> createState() => _MainScaffoldState();
+  State<MainScaffold> createState() =>
+      _MainScaffoldState();
 }
 
-class _MainScaffoldState extends State<MainScaffold> {
+class _MainScaffoldState
+    extends State<MainScaffold> {
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     final pages = [
       HomePage(
-        repository: widget.itemRepository,
-        favoritesRepository: widget.favoritesRepository,
+        repository:
+            widget.itemRepository,
+        favoritesRepository:
+            widget.favoritesRepository,
       ),
+
       SellItemPage(
-        draftRepository: widget.draftRepository,
+        draftRepository:
+            widget.draftRepository,
       ),
+
       FavoritesPage(
-        repository: widget.favoritesRepository,
+        repository:
+            widget.favoritesRepository,
       ),
     ];
 
     return Scaffold(
-      body: pages[_selectedIndex],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: pages,
+      ),
 
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar:
+          BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) {
           setState(() {
@@ -54,15 +66,18 @@ class _MainScaffoldState extends State<MainScaffold> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.storefront),
+            icon:
+                Icon(Icons.storefront),
             label: 'หน้าหลัก',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_a_photo),
+            icon:
+                Icon(Icons.add_a_photo),
             label: 'ลงประกาศขาย',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon:
+                Icon(Icons.favorite),
             label: 'รายการโปรด',
           ),
         ],

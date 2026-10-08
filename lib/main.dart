@@ -16,7 +16,9 @@ void main() {
   runApp(
     ChangeNotifierProvider<CartModel>(
       create: (context) => CartModel(),
-      child: MyApp(db: db),
+      child: MyApp(
+        db: db,
+      ),
     ),
   );
 }
@@ -36,9 +38,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       home: MainScaffold(
-        itemRepository: ItemRepositoryApi(),
+        itemRepository:
+            ItemRepositoryApi(),
+
         favoritesRepository:
             FavoritesRepositoryDrift(db),
+
         draftRepository:
             ListingDraftRepositoryDrift(db),
       ),

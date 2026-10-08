@@ -38,8 +38,8 @@ class ListingDraftRepositoryDrift
   }
 
   @override
-  Future<void> deleteDraft(int id) async {
-    await (_db.delete(_db.listingDrafts)
+  Future<void> deleteDraft(int id) {
+    return (_db.delete(_db.listingDrafts)
           ..where((t) => t.id.equals(id)))
         .go();
   }
